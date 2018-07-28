@@ -1,73 +1,54 @@
-Brlcoin integration/staging tree
+Brlcoin integração
 ================================
 
-http://www.brlcoin.org
+http://www.brlcoin.cash
 
-Copyright (c) 2009-2014 Bitcoin Developers
-Copyright (c) 2011-2014 Brlcoin Developers
-
-What is Brlcoin?
+O que é Brlcoin?
 ----------------
 
-Brlcoin is a lite version of Bitcoin using scrypt as a proof-of-work algorithm.
- - 2.5 minute block targets
- - subsidy halves in 840k blocks (~4 years)
- - ~84 million total coins
+O protocolo do BRLCOIN oferece a liberdade para negociar qualquer ativo de ponta a ponta em tempo real, sem intermediários ou taxas abusivas.
 
-The rest is the same as Bitcoin.
- - 50 coins per block
- - 2016 blocks to retarget difficulty
+Acreditamos que esta tecnologia, por ser publicamente auditável, possa ajudar a população a cobrar mais dos servidores públicos, colocando assim novamente o poder em mãos de quem deve estar.
 
-For more information, as well as an immediately useable, binary version of
-the Brlcoin client sofware, see http://www.brlcoin.org.
+Informações
+----------------
+ 
+Simbolo: BRLC<br>
+Endereços: R<br>
+Emissão: 44210526 Coins<br>
+Moedas Por Blocos: 25 BRLC<br>
+Transações: 3 Confirmações<br>
+Algoritmo: Scrypt<br>
+Tipo: POW<br>
+Maturidade De Bloco: 10 Blocos<br>
+Porta RPC:38408<br>
+Porta P2P:38407<br>
 
-License
--------
+Instalação
+----------------
 
-Brlcoin is released under the terms of the MIT license. See `COPYING` for more
-information or see http://opensource.org/licenses/MIT.
+execute este comando como root
 
-Development process
--------------------
+fallocate -l 3G /swapfile<br>
+chmod 600 /swapfile<br>
+mkswap /swapfile<br>
+swapon /swapfile<br>
+echo -e “/swapfile none swap sw 0 0 \n” >> /etc/fstab<br><br>
 
-Developers work in their own trees, then submit pull requests when they think
-their feature or bug fix is ready.
+Instale as dependencias
 
-If it is a simple/trivial/non-controversial change, then one of the Brlcoin
-development team members simply pulls it.
+sudo apt-get install git -y && sudo apt-get install build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils -y && sudo apt-get install libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev -y && sudo apt-get install libboost-all-dev -y && sudo apt-get install software-properties-common -y && sudo add-apt-repository ppa:bitcoin/bitcoin && sudo apt-get update && sudo apt-get install libdb4.8-dev libdb4.8++-dev -y && sudo apt-get install libminiupnpc-dev -y && sudo apt-get install libzmq3-dev -y && sudo apt-get install libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools libprotobuf-dev protobuf-compiler -y && sudo apt-get install libqt4-dev libprotobuf-dev protobuf-compiler -y
 
-If it is a *more complicated or potentially controversial* change, then the patch
-submitter will be asked to start a discussion with the devs and community.
+clone nosso repositório
 
-The patch will be accepted if there is broad consensus that it is a good thing.
-Developers should expect to rework and resubmit patches if the code doesn't
-match the project's coding conventions (see `doc/coding.txt`) or are
-controversial.
+git clone https://github.com/brlcoinoficial/brlcoin.git<br>
+cd brlcoin<br>
+cd src<br>
+mkdir obj<br>
+make -f makefile.unix<br>
 
-The `master` branch is regularly built and tested, but is not guaranteed to be
-completely stable. [Tags](https://github.com/brlcoin-project/brlcoin/tags) are created
-regularly to indicate new official, stable release versions of Brlcoin.
+com isso gera gerado o daemon da moeda
+podendo testar com o seguinte comando:
 
-Testing
--------
-
-Testing and code review is the bottleneck for development; we get more pull
-requests than we can review and test. Please be patient and help out, and
-remember this is a security-critical project where any mistake might cost people
-lots of money.
-
-### Automated Testing
-
-Developers are strongly encouraged to write unit tests for new code, and to
-submit new unit tests for old code.
-
-Unit tests for the core code are in `src/test/`. To compile and run them:
-
-    cd src; make -f makefile.unix test
-
-Unit tests for the GUI code are in `src/qt/test/`. To compile and run them:
-
-    qmake BITCOIN_QT_TEST=1 -o Makefile.test bitcoin-qt.pro
-    make -f Makefile.test
-    ./brlcoin-qt_test
+./brlcoind getinfo
 
