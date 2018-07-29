@@ -43,6 +43,7 @@ clone nosso repositório
 
 git clone https://github.com/brlcoinoficial/brlcoin.git<br>
 cd brlcoin<br>
+chmod 755 src/leveldb/build_detect_platform<br>
 cd src<br>
 mkdir obj<br>
 make -f makefile.unix<br>
