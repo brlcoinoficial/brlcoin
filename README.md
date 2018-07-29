@@ -48,7 +48,7 @@ cd src<br>
 mkdir obj<br>
 make -f makefile.unix<br>
 
-com isso gera gerado o daemon da moeda
+com isso será gerado o daemon da moeda
 podendo testar com o seguinte comando:
 
 ./brlcoind getinfo
